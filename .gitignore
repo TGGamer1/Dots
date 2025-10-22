@@ -1,2 +1,3 @@
-local/share/fish/*
-config/hypr/*
+.local/*
+.config/hypr/*
+.config/neovim/*
