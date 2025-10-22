@@ -21,6 +21,10 @@ if status is-interactive # Commands to run in interactive sessions can go here
         source ~/.config/fish/alias.fish
     end
 
+    if test -f ~/Dots/home/shellconf/alias
+        source ~/Dots/home/shellconf/alias
+    end
+
     # Aliases
     alias pamcan='pacman'
     alias ls='eza --icons'

@@ -93,39 +93,38 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
-# --------------------------------------------------------------------------------
-#   NOTE: Aliases
-
-alias bashconf="nvim ~/.bashrc"
-alias zshconf="nvim ~/.zshrc"
-alias fishconf="nvim ~/.config/fish/config.fish"
-alias kittyconf="nvim ~/.config/kitty/kitty.conf"
-alias hyprconf="z ~/.config/hypr/hyprland"
-
-alias upgrade="sudo pacman -Syu"
-alias install="sudo pacman -S"
-alias remove="sudo pacman -R"
-
-alias history="atuin history list | bat"
-alias which="pacman -Ql"
- 
-alias grep="rg"
-alias find="fd"
-alias cat="bat"
-alias ls="eza -lha --icons"
-alias tree="eza --tree --icons"
-alias cd="z"
-
+## --------------------------------------------------------------------------------
+##   NOTE: Aliases
+#
+#alias bashconf="nvim ~/.bashrc"
+#alias zshconf="nvim ~/.zshrc"
+#alias fishconf="nvim ~/.config/fish/config.fish"
+#alias kittyconf="nvim ~/.config/kitty/kitty.conf"
+#alias hyprconf="z ~/.config/hypr/hyprland"
+#
+#alias upgrade="yay -Syu"
+#alias install="yay -S"
+#alias remove="yay -R"
+#
+#alias history="atuin history list | bat"
+#alias which="pacman -Ql"
+# 
+#alias grep="rg"
+#alias find="fd"
+#alias cat="bat"
+#alias ls="eza -lha --icons"
+#alias tree="eza --tree --icons"
+#alias cd="z"
+#
 # --------------------------------------------------------------------------------
 #   NOTE: eval and if things
 
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
-if [ -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt ]; then
-    cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-fi
+
 source /usr/share/nvm/init-nvm.sh
+source ~/Dots/home/shellconf/alias
 
 # ----------------------------------------------------------------------------------
 
