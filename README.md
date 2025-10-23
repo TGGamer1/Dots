@@ -2,17 +2,19 @@
 
 This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions. It works on Arch, Debian/Ubuntu, Fedora, NixOS, and even supports Brew and Flatpak.
 
+**The User is advised to read the endire README.**
+
 ## Features
 
 - Installs common and distro-specific packages
 - Sets up your dotfiles via `stow`
 - Configures your shell (Fish, Zsh, Bash)
 - Installs Flatpak apps like Zen Browser
-- Modular scripts for easy maintenance
+- Modular scripts for easy maintenance and customization
 
 ## Quick Start
 
-Run the bootstrap script directly from GitHub:
+Clone and run the bootstrap.sh form Github:
 
 ```bash
 git clone https://github.com/TGGamer1/Dots.git ~/Dots
@@ -43,30 +45,33 @@ Dots/
 
 ## Usage
 
-**Optional:** Customize your pkgs/*.txt files to include the packages you want.
-
-Run bootstrap.sh with --auto to automatically install packages and link configs.
+Run `bootstrap.sh` with `--auto` to automatically install packages and link configs.
+Or Use `--skip-update` to automatically install packages and link configs without updating the package repo(s) and your entire system
 
 Open a new terminal for changes to take effect.
 
-Alternately, In a Posix-Compilant Shell 
+Alternately, In a Posix-Compilant Shell: 
 ```
 $ source bootstrap.sh
 ```
+`Bash` is recommanded by the developer as it is what he used, but `sh` can also be used.
+
+
+**Optional:** Customize the pkgs/*.txt files to include the packages you want.
 
 ## Notes
 
 The scripts should be sourced in the following order for proper setup:
 
-1. update_system.sh
+1. *update_system.sh* ( **WARNING** the setup may not function properly without it)
 
-2. install_pkgs.sh
+2. *install_pkgs.sh*
 
-3. stow_configs.sh
+3. *stow_configs.sh*
 
-4. setup_shell.sh
+4. *setup_shell.sh*
 
-5. install_flatpak.sh
+5. *install_flatpak.sh*
 
 For multi-user setups (like Nix), packages may need to be installed per-user.
 
