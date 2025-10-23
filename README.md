@@ -1,8 +1,9 @@
 # Dots Bootstrap
 
-```bash
+
 curl -fsSL https://raw.githubusercontent.com/TGGamer01/Dots/main/bootstrap.sh | bash
 
+```bash
 ---
 
 ## ✅ Final Notes
