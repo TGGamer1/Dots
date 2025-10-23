@@ -13,7 +13,7 @@ PKG_DIR="$DOTFILES_DIR/packages"
 # ─── Clone repo if missing ────────────────
 if [ ! -d "$DOTFILES_DIR" ]; then
     log "Dotfiles repo not found — cloning..."
-    git clone https://github.com/TGGamer01/Dots.git "$DOTFILES_DIR"
+    git clone https://github.com/TGGamer1/Dots.git "$DOTFILES_DIR"
 fi
 cd "$DOTFILES_DIR"
 
