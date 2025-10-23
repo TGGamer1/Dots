@@ -79,4 +79,5 @@ Scripts are to be run one at a time through bootstrap.sh. If the user wishes he 
 
 Enjoy your setup! 🚀
 
-**P.S The Scripts were written in Arch and have not been tested in other distros as of now.**
+
+#### P.S The Scripts were written in Arch and have not been tested in other distros as of now.
