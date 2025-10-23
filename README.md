@@ -15,7 +15,9 @@ This repository automates setting up your terminal workflow and dotfiles across 
 Run the bootstrap script directly from GitHub:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/TGGamer1/Dots/main/bootstrap.sh | bash
+git clone https://github.com/TGGamer1/Dots.git ~/Dots
+cd ~/Dots
+./bootstrap.sh
 ```
 
 ⚠️ Make sure to read below if you want to customize package installations.
@@ -35,7 +37,7 @@ Dots/
     ├── arch.txt             # Arch-specific packages
     ├── debian.txt           # Debian/Ubuntu-specific packages
     ├── fedora.txt           # Fedora-specific packages
-    └── nix.txt              # Nix/Brew packages
+    └── nix.txt              # Nix package manager(Works in NixOS & w/o)
 
 ```
 
@@ -43,26 +45,28 @@ Dots/
 
 **Optional:** Customize your pkgs/*.txt files to include the packages you want.
 
-Run bootstrap.sh to automatically install packages and link configs.
+Run bootstrap.sh with --auto to automatically install packages and link configs.
 
 Open a new terminal for changes to take effect.
 
 Alternately, In a Posix-Compilant Shell 
 ```
-source bootstrap.sh
+$ source bootstrap.sh
 ```
 
 ## Notes
 
 The scripts should be sourced in the following order for proper setup:
 
-1. install_pkgs.sh
+1. update_system.sh
 
-2. stow_configs.sh
+2. install_pkgs.sh
 
-3. setup_shell.sh
+3. stow_configs.sh
 
-4. install_flatpak.sh
+4. setup_shell.sh
+
+5. install_flatpak.sh
 
 For multi-user setups (like Nix), packages may need to be installed per-user.
 
