@@ -1,11 +1,8 @@
 # Shell
-fish
-zsh
-bash
+fish zsh bash
 
 # Common Packages
-git
-curl
+git curl
 wget
 neovim
 atuin
