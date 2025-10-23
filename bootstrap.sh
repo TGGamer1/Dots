@@ -36,32 +36,94 @@ fi
 log "Detected distro: $DISTRO"
 
 # ─── Install packages ─────────────────────
+# install_packages() {
+#     local file="$1"
+#     [ ! -f "$file" ] && return
+# 
+#     while read -r pkg; do
+#         [[ -z "$pkg" || "$pkg" == \#* ]] && continue
+# 
+#         if [ "$DISTRO" = "arch" ]; then
+#             if command -v yay &>/dev/null; then
+#                 yay -S --noconfirm "$pkg" && continue
+#             else
+#                 sudo pacman -S --noconfirm "$pkg" && continue
+#             fi
+#         elif command -v apt &>/dev/null; then
+#             sudo apt install -y "$pkg" && continue
+#         elif command -v nix &>/dev/null; then
+#             nix profile install "$pkg" && continue
+#         elif command -v brew &>/dev/null; then
+#             brew install "$pkg" && continue
+#         elif command -v flatpak &>/dev/null; then
+#             flatpak install -y "$pkg" && continue
+#         else
+#             error "No supported package manager for $pkg"
+#         fi
+#     done < "$file"
+# }
 install_packages() {
     local file="$1"
     [ ! -f "$file" ] && return
 
-    while read -r pkg; do
-        [[ -z "$pkg" || "$pkg" == \#* ]] && continue
+    # Read file, ignore empty lines & comments, join all into one string
+    local pkgs_str
+    pkgs_str=$(grep -vE '^\s*#|^\s*$' "$file" | tr '\n' ' ')
 
-        if [ "$DISTRO" = "arch" ]; then
-            if command -v yay &>/dev/null; then
-                yay -S --noconfirm "$pkg" && continue
-            else
-                sudo pacman -S --noconfirm "$pkg" && continue
-            fi
-        elif command -v apt &>/dev/null; then
-            sudo apt install -y "$pkg" && continue
-        elif command -v nix &>/dev/null; then
-            nix profile install "$pkg" && continue
-        elif command -v brew &>/dev/null; then
-            brew install "$pkg" && continue
-        elif command -v flatpak &>/dev/null; then
-            flatpak install -y "$pkg" && continue
+    # Convert to array
+    local pkgs=($pkgs_str)
+
+    if [ "${#pkgs[@]}" -eq 0 ]; then
+        log "No packages to install in $file"
+        return
+    fi
+
+    # Arch (pacman/yay)
+    if [ "$DISTRO" = "arch" ]; then
+        if command -v yay &>/dev/null; then
+            log "Installing packages via yay: ${pkgs[*]}"
+            yay -S --noconfirm "${pkgs[@]}"
         else
-            error "No supported package manager for $pkg"
+            log "Installing packages via pacman: ${pkgs[*]}"
+            sudo pacman -S --noconfirm "${pkgs[@]}"
         fi
-    done < "$file"
+
+    # Debian/Ubuntu (apt)
+    elif command -v apt &>/dev/null; then
+        log "Installing packages via apt: ${pkgs[*]}"
+        sudo apt install -y "${pkgs[@]}"
+
+    # Fedora (dnf)
+    elif command -v dnf &>/dev/null; then
+        log "Installing packages via dnf: ${pkgs[*]}"
+        sudo dnf install -y "${pkgs[@]}"
+
+    # Nix
+    elif command -v nix &>/dev/null; then
+        log "Installing packages via nix: ${pkgs[*]}"
+        local nixpkgs_args=()
+        for pkg in "${pkgs[@]}"; do
+            nixpkgs_args+=("nixpkgs.$pkg")
+        done
+        nix profile install -iA "${nixpkgs_args[@]}"
+
+    # Brew
+    elif command -v brew &>/dev/null; then
+        log "Installing packages via brew: ${pkgs[*]}"
+        brew install "${pkgs[@]}"
+
+    # Flatpak
+    elif command -v flatpak &>/dev/null; then
+        log "Installing packages via flatpak: ${pkgs[*]}"
+        flatpak install -y "${pkgs[@]}"
+
+    else
+        for pkg in "${pkgs[@]}"; do
+            error "No supported package manager for $pkg"
+        done
+    fi
 }
+
 
 # ─── Arch: install yay if missing ─────────
 if [ "$DISTRO" = "arch" ]; then
