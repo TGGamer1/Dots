@@ -91,32 +91,8 @@ source $ZSH/oh-my-zsh.sh
  fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+ export ARCHFLAGS="-arch $(uname -m)"
 
-## --------------------------------------------------------------------------------
-##   NOTE: Aliases
-#
-#alias bashconf="nvim ~/.bashrc"
-#alias zshconf="nvim ~/.zshrc"
-#alias fishconf="nvim ~/.config/fish/config.fish"
-#alias kittyconf="nvim ~/.config/kitty/kitty.conf"
-#alias hyprconf="z ~/.config/hypr/hyprland"
-#
-#alias upgrade="yay -Syu"
-#alias install="yay -S"
-#alias remove="yay -R"
-#
-#alias history="atuin history list | bat"
-#alias which="pacman -Ql"
-# 
-#alias grep="rg"
-#alias find="fd"
-#alias cat="bat"
-#alias ls="eza -lha --icons"
-#alias tree="eza --tree --icons"
-#alias cd="z"
-#
-# --------------------------------------------------------------------------------
 #   NOTE: eval and if things
 
 eval "$(atuin init zsh)"

@@ -78,3 +78,5 @@ For multi-user setups (like Nix), packages may need to be installed per-user.
 Scripts are to be run one at a time through bootstrap.sh. If the user wishes he may run them indivisually
 
 Enjoy your setup! 🚀
+
+P.S The Scripts were written in Arch and have not been tested in other distros as of 23-10-2025.
