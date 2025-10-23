@@ -150,6 +150,39 @@ else
     warn "Unknown distro — skipping distro-specific packages."
 fi
 
+# ─── Ensure Flatpak is installed ─────────────────
+if ! command -v flatpak &>/dev/null; then
+    log "Flatpak not found — installing..."
+    if [ "$DISTRO" = "arch" ]; then
+        sudo pacman -S --noconfirm flatpak
+    elif command -v apt &>/dev/null; then
+        sudo apt install -y flatpak
+    elif command -v dnf &>/dev/null; then
+        sudo dnf install -y flatpak
+    elif command -v nix &>/dev/null; then
+        nix profile install nixpkgs.flatpak
+    elif command -v brew &>/dev/null; then
+        brew install flatpak
+    else
+        warn "No supported package manager to install Flatpak."
+    fi
+fi
+
+# ─── Ensure Flathub repo exists ─────────────────
+if ! flatpak remote-list | grep -q flathub; then
+    log "Adding Flathub repository..."
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+fi
+
+# ─── Install Zen Browser ────────────────────────
+if ! flatpak list | grep -q io.github.zen_browser.zen; then
+    log "Installing Zen Browser via Flatpak..."
+    flatpak install -y flathub io.github.zen_browser.zen
+else
+    log "Zen Browser already installed via Flatpak — skipping."
+fi
+
+
 # ─── Stow configs ─────────────────────────
 log "Linking dotfiles via stow..."
 if ! command -v stow &>/dev/null; then
@@ -167,7 +200,7 @@ fi
 log "Sourcing shell configs..."
 case "$USER_SHELL" in
     fish)
-        [ -f "$HOME/.config/fish/conf.d/00-source-all.fish" ] && source "$HOME/.config/fish/conf.d/00-source-all.fish"
+        [ -f "$HOME/.config/fish" ] && source "$HOME/.config/fish"
         ;;
     zsh)
         [ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
