@@ -1,6 +1,6 @@
 # Dots — Multi-Distro Bootstrap
 
-This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions. It works on Arch, Debian/Ubuntu, Fedora, NixOS, and even supports Brew and Flatpak.
+This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions. It works on Arch, Debian/Ubuntu, Fedora, NixOS(No idea how it will behave), and even supports Brew and Flatpak.
 
 **The User is advised to read the endire README.**
 
@@ -74,5 +74,7 @@ The scripts should be sourced in the following order for proper setup:
 5. *install_flatpak.sh*
 
 For multi-user setups (like Nix), packages may need to be installed per-user.
+
+Scripts are to be run one at a time through bootstrap.sh. If the user wishes he may run them indivisually
 
 Enjoy your setup! 🚀
