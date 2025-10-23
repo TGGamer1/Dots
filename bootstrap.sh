@@ -8,7 +8,7 @@ error() { echo -e "\033[1;31m[ERROR]\033[0m $1"; }
 
 # ─── Vars ─────────────────────────────────
 DOTFILES_DIR="$HOME/Dots"
-PKG_DIR="$DOTFILES_DIR/packages"
+PKG_DIR="$DOTFILES_DIR/pkgs"
 
 # ─── Clone repo if missing ────────────────
 if [ ! -d "$DOTFILES_DIR" ]; then

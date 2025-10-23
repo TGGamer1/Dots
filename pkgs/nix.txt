@@ -1,0 +1,8 @@
+git
+stow
+fish
+zsh
+neovim
+fzf
+zoxide
+bat
