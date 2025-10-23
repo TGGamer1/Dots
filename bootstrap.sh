@@ -193,14 +193,14 @@ fi
 if [ ! -d home ] && [ ! -d config ]; then
     warn "No stow directories found (home/config) — skipping."
 else
-    stow -t ~ home config
+    stow -t ~ home config --ignore=".gitconfig"
 fi
 
 # ─── Source shell configs ─────────────────
 log "Sourcing shell configs..."
 case "$USER_SHELL" in
     fish)
-        [ -f "$HOME/.config/fish" ] && source "$HOME/.config/fish"
+        [ -f "$HOME/.config/fish/config.fish" ] && source "$HOME/.config/fish/config.fish"
         ;;
     zsh)
         [ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
