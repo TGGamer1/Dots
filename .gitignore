@@ -1,3 +1,6 @@
-local/*
-config/hypr/*
+local
+config/hypr
 config/nvim
+config/gtk-*
+config/gtkrc-2.0
+home/.gtkrc-2.0
