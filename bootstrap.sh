@@ -1,92 +1,133 @@
 #!/usr/bin/env bash
-# ===============================================
-# T's Multi-Distro Bootstrap Script
-# ===============================================
-
 set -e
 
-# Colors
-green="\e[32m"
-blue="\e[34m"
-reset="\e[0m"
+# ─── Colors ───────────────────────────────
+log()   { echo -e "\033[1;32m[INFO]\033[0m $1"; }
+warn()  { echo -e "\033[1;33m[WARN]\033[0m $1"; }
+error() { echo -e "\033[1;31m[ERROR]\033[0m $1"; }
 
-# Info prefix
-info() {
-    echo -e "${blue}[INFO]${reset} $1"
-}
+# ─── Vars ─────────────────────────────────
+DOTFILES_DIR="$HOME/Dots"
+SCRIPTS_DIR="$DOTFILES_DIR/scripts"
+PKG_DIR="$DOTFILES_DIR/pkgs"
+AUTO_MODE=false
+SKIP_UPDATE=false
 
-# Detect distro
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    distro=$ID
+# ─── Parse args ───────────────────────────
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --auto) AUTO_MODE=true ;;
+        --skip-update) SKIP_UPDATE=true ;;
+        *) warn "Unknown option: $1" ;;
+    esac
+    shift
+done
+
+# ─── Clone repo if missing ────────────────
+if [ ! -d "$DOTFILES_DIR" ]; then
+    log "Dotfiles repo not found — cloning..."
+    git clone https://github.com/TGGamer1/Dots.git "$DOTFILES_DIR"
+fi
+cd "$DOTFILES_DIR"
+
+# ─── Detect shell ─────────────────────────
+USER_SHELL=$(basename "$SHELL")
+
+# ─── Detect distro ────────────────────────
+if [ -f /etc/arch-release ]; then
+    DISTRO="arch"
+elif [ -f /etc/debian_version ]; then
+    DISTRO="debian"
+elif grep -q "Fedora" /etc/os-release 2>/dev/null; then
+    DISTRO="fedora"
+elif grep -q "NixOS" /etc/os-release 2>/dev/null; then
+    DISTRO="nix"
 else
-    distro="unknown"
+    DISTRO="unknown"
 fi
 
-# Detect shell
-shell_name=$(basename "$SHELL")
-
-info "=== T's Multi-Distro Bootstrap ==="
-info "Detected shell: $shell_name"
-info "Detected distro: $distro"
-echo
-
-# Menu function
-show_menu() {
-    echo "1) Update System Packages             4) Setup Shell (setup_shell.sh)"
-    echo "2) Install Packages (install_pkgs.sh) 5) Install Flatpaks (install_flatpak.sh)"
-    echo "3) Stow Configs (stow_configs.sh)     6) Exit"
-    echo
-}
-
-# Read choice safely (even when piped from curl)
-read_choice() {
+# ─── Safe read wrapper ────────────────────
+safe_read() {
+    local prompt="$1"
+    local varname="$2"
     if [ -t 0 ]; then
-        read -rp "Choose what to run: " choice
+        read -rp "$prompt" "$varname"
     elif [ -e /dev/tty ]; then
-        read -rp "Choose what to run: " choice </dev/tty
+        read -rp "$prompt" "$varname" </dev/tty
     else
-        echo "[ERROR] Non-interactive shell detected. Exiting."
-        exit 1
+        log "Non-interactive environment — defaulting to yes."
+        eval "$varname='y'"
     fi
 }
 
-# Main loop
-while true; do
+# ─── Script Runner ────────────────────────
+run_script() {
+    local script_name="$1"
+    local script_path="$SCRIPTS_DIR/$script_name"
+
+    if [ ! -f "$script_path" ]; then
+        warn "$script_name not found, skipping."
+        return
+    fi
+
+    if $AUTO_MODE; then
+        log "Running $script_name..."
+        source "$script_path"
+    else
+        local choice
+        safe_read "Run $script_name? [Y/n] " choice
+        case "$choice" in
+            [nN]*) log "Skipping $script_name";;
+            *) log "Running $script_name..."; source "$script_path";;
+        esac
+    fi
+    echo
+}
+
+# ─── Menu (Manual Mode) ───────────────────
+show_menu() {
+    log "=== T's Multi-Distro Bootstrap ==="
+    log "Detected shell: $USER_SHELL"
+    log "Detected distro: $DISTRO"
+    echo
+
+    options=(
+        "Update System Packages"
+        "Install Packages (install_pkgs.sh)"
+        "Stow Configs (stow_configs.sh)"
+        "Setup Shell (setup_shell.sh)"
+        "Install Flatpaks (install_flatpak.sh)"
+        "Exit"
+    )
+
+    PS3=$'\nChoose what to run: '
+    select opt in "${options[@]}"; do
+        case "$opt" in
+            "Update System Packages") run_script "update_system.sh" ;;
+            *install_pkgs.sh*)       run_script "install_pkgs.sh" ;;
+            *stow_configs.sh*)       run_script "stow_configs.sh" ;;
+            *setup_shell.sh*)        run_script "setup_shell.sh" ;;
+            *install_flatpak.sh*)    run_script "install_flatpak.sh" ;;
+            "Exit") log "Goodbye!"; break ;;
+            *) warn "Invalid choice."; ;;
+        esac
+    done
+}
+
+# ─── Auto Mode ────────────────────────────
+if $AUTO_MODE; then
+    if ! $SKIP_UPDATE; then
+        update_system
+    else
+        log "Skipping system update as requested."
+    fi
+
+    run_script "update_system.sh"
+    run_script "install_pkgs.sh"
+    run_script "stow_configs.sh"
+    run_script "setup_shell.sh"
+    run_script "install_flatpak.sh"
+    log "Bootstrap complete ✅"
+else
     show_menu
-    read_choice
-
-    case "$choice" in
-        1)
-            info "Running update_system.sh..."
-            bash ./scripts/update_system.sh || echo "[WARN] update_system.sh not found."
-            ;;
-        2)
-            info "Running install_pkgs.sh..."
-            bash ./scripts/install_pkgs.sh || echo "[WARN] install_pkgs.sh not found."
-            ;;
-        3)
-            info "Running stow_configs.sh..."
-            bash ./scripts/stow_configs.sh || echo "[WARN] stow_configs.sh not found."
-            ;;
-        4)
-            info "Running setup_shell.sh..."
-            bash ./scripts/setup_shell.sh || echo "[WARN] setup_shell.sh not found."
-            ;;
-        5)
-            info "Running install_flatpak.sh..."
-            bash ./scripts/install_flatpak.sh || echo "[WARN] install_flatpak.sh not found."
-            ;;
-        6)
-            info "Exiting."
-            exit 0
-            ;;
-        *)
-            echo "[ERROR] Invalid choice."
-            ;;
-    esac
-
-    echo
-    info "Task completed. Returning to menu..."
-    echo
-done
+fi
