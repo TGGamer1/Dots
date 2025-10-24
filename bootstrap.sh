@@ -6,6 +6,11 @@ log()   { echo -e "\033[1;32m[INFO]\033[0m $1"; }
 warn()  { echo -e "\033[1;33m[WARN]\033[0m $1"; }
 error() { echo -e "\033[1;31m[ERROR]\033[0m $1"; }
 
+run_cmd() {
+    echo -e "\033[1;34m>>> $@\033[0m"
+    "$@"
+}
+
 # ─── Vars ─────────────────────────────────
 DOTFILES_DIR="$HOME/Dots"
 SCRIPTS_DIR="$DOTFILES_DIR/scripts"
@@ -26,8 +31,9 @@ done
 # ─── Clone repo if missing ────────────────
 if [ ! -d "$DOTFILES_DIR" ]; then
     log "Dotfiles repo not found — cloning..."
-    git clone https://github.com/TGGamer1/Dots.git "$DOTFILES_DIR"
+    run_cmd "git clone https://github.com/TGGamer1/Dots.git '$DOTFILES_DIR'"
 fi
+log "Changing directory to $DOTFILES_DIR"
 cd "$DOTFILES_DIR"
 
 # ─── Detect shell ─────────────────────────
@@ -117,16 +123,16 @@ show_menu() {
 # ─── Auto Mode ────────────────────────────
 if $AUTO_MODE; then
     if ! $SKIP_UPDATE; then
-        update_system
+        run_script update_system
     else
         log "Skipping system update as requested."
     fi
 
-    run_script "update_system.sh"
-    run_script "install_pkgs.sh"
-    run_script "stow_configs.sh"
-    run_script "setup_shell.sh"
-    run_script "install_flatpak.sh"
+    run_cmd run_script "update_system.sh"
+    run_cmd run_script "install_pkgs.sh"
+    run_cmd run_script "stow_configs.sh"
+    run_cmd run_script "setup_shell.sh"
+    run_cmd run_script "install_flatpak.sh"
     log "Bootstrap complete. Enjoy Your Setup🎉"
 else
     show_menu
