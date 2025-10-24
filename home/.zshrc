@@ -93,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
  export ARCHFLAGS="-arch $(uname -m)"
 
-#   NOTE: eval and if things
+#   NOTE: eval and if and source things
 
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"

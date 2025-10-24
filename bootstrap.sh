@@ -127,7 +127,7 @@ if $AUTO_MODE; then
     run_script "stow_configs.sh"
     run_script "setup_shell.sh"
     run_script "install_flatpak.sh"
-    log "Bootstrap complete ✅"
+    log "Bootstrap complete. Enjoy Your Setup🎉"
 else
     show_menu
 fi

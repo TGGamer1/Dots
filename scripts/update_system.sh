@@ -20,7 +20,7 @@ log "Updating system packages for $DISTRO..."
 
 case "$DISTRO" in
     arch)
-        sudo pacman -Syu --noconfirm ;;
+        yay -Syu --noconfirm ;;
     debian)
         sudo apt update -y && sudo apt upgrade -y ;;
     fedora)

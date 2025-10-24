@@ -6,7 +6,7 @@ This repository automates setting up your terminal workflow and dotfiles across 
 
 ## Features
 
-- Installs common and distro-specific packages
+- Installs common and distro-specific packages for ArchLinux, Debian and Fedora.
 - Sets up your dotfiles via `stow`
 - Configures your shell (Fish, Zsh, Bash)
 - Installs Flatpak apps like Zen Browser
@@ -21,6 +21,7 @@ git clone https://github.com/TGGamer1/Dots.git ~/Dots
 cd ~/Dots
 ./bootstrap.sh
 ```
+The name of the install script is `bootstrap.sh`.
 
 ⚠️ Make sure to read below if you want to customize package installations.
 
@@ -75,7 +76,11 @@ The scripts should be sourced in the following order for proper setup:
 
 For multi-user setups (like Nix), packages may need to be installed per-user.
 
-Scripts are to be run one at a time through bootstrap.sh. If the user wishes he may run them indivisually
+Scripts are to be run one at a time through bootstrap.sh. If the user wishes he may run them manually.
+
+The `home/shellconf/alias` file should be edited according to the user's liking, containging only `alias` as it is sourced by `bash`, `zsh` and `fish` which use different syntax for functions.
+
+Oh-My-Zsh should be installed by the user prior to running `setup_shell.sh`.
 
 Enjoy your setup! 🚀
 
