@@ -112,8 +112,7 @@ $ source bootstrap.sh
 
 <h3>• inspirations/copying •</h3>
 
-- This project was heavily inspired by <a href="https://github.com/end-4">end-4</a>’s legendary dotfile structure  
-and their approach to transparent, idempotent setup scripts.
+- This project was heavily inspired by <a href="https://github.com/end-4">end-4</a>’s legendary dotfile structure and their approach to transparent, idempotent setup scripts.
 
 - Copying: Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (maybe unless you loudly do weird stuff)
 
