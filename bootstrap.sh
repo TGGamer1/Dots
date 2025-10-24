@@ -123,7 +123,7 @@ show_menu() {
 # ─── Auto Mode ────────────────────────────
 if $AUTO_MODE; then
     if ! $SKIP_UPDATE; then
-        run_script update_system
+        run_script update_system.sh
     else
         log "Skipping system update as requested."
     fi
