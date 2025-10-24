@@ -21,20 +21,20 @@
      
   - **Overview**: This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions.
   - **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, NixOS(No idea how it will behave), and even supports Brew and Flatpak.
-  - **Transparent installation**: Every command is shown before it's run
+  - **Transparent installation**: Every command is shown before it's run.
   - **Automatic setup**: with the `--auto` flag everything will be automatically installed and setup with proper symlinks using stow.
 </details>
 <details> 
   <summary>Installation</summary>
 
-   - Just run `git clone https://github.com/TGGamer1/Dots.git` 
-     - cd into the repo and run `./bootstrap.sh`
-     - **The user is advised to read the endire README.**
+   - Just run 
+   ```bash
+   git clone https://github.com/TGGamer1/Dots.git ~/Dots
+   cd ~/Dots
+   ./bootstrap.sh
+   ```
    - The name of the install script is `bootstrap.sh`.
 </details>
-
-- ⚠️ Make sure to read below if you want to customize package installations.
-
 <details>
   <summary>Repo overview</summary>
 
@@ -56,6 +56,8 @@
 
 Everything is writen in `bash`
 </details>
+
+- **The user is advised to read the endire README.**
 
 <div align="center">
     <h2>• usage •</h2>
