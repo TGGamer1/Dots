@@ -57,7 +57,7 @@
 Everything is writen in `bash`
 </details>
 
-- **The user is advised to read the endire README.**
+**The user is advised to read the endire README.**
 
 <div align="center">
     <h2>• usage •</h2>
