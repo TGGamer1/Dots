@@ -106,7 +106,7 @@ $ source bootstrap.sh
     <h4></h4>
 </div>
 
-<div align="center">
+<div>
 
 ---
 
@@ -116,6 +116,7 @@ $ source bootstrap.sh
 and their approach to transparent, idempotent setup scripts.
 
 - Copying: Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (maybe unless you loudly do weird stuff)
+
 </div>
 
 ---
