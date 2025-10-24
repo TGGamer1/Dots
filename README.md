@@ -65,7 +65,7 @@ Everything is writen in `bash`
 </div>
 
 Run `bootstrap.sh` with `--auto` to automatically install packages and link configs.
-Or use `--skip-update` to automatically install packages and link configs without updating the package repo(s) and your entire system
+Or use `--skip-update` with `--auto` to automatically install packages and link configs without updating the package repo(s) and your entire system
 
 Open a new terminal for changes to take effect.
 
