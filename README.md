@@ -3,13 +3,13 @@
     <h3></h3>
 </div>
 
-<center>
+<div align="center">
 
 ![](https://img.shields.io/github/last-commit/TGGamer1/Dots?&style=for-the-badge&color=8ad7eb&logo=git&logoColor=D9E0EE&labelColor=1E202B)
 ![](https://img.shields.io/github/stars/TGGamer1/Dots?style=for-the-badge&logo=andela&color=86dbd7&logoColor=D9E0EE&labelColor=1E202B)
 ![](https://img.shields.io/github/repo-size/TGGamer1/Dots?color=86dbce&label=SIZE&logo=protondrive&style=for-the-badge&logoColor=D9E0EE&labelColor=1E202B)
 
-</center>
+</div>
 
 <div align="center">
     <h2>• overview •</h2>
