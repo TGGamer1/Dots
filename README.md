@@ -106,7 +106,7 @@ $ source bootstrap.sh
     <h4></h4>
 </div>
 
-<div>
+<div align="center">
 
 ---
 
