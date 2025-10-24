@@ -5,3 +5,5 @@ config/gtk-*
 config/gtkrc-2.0
 home/.gtkrc-2.0
 home/.bash_history
+home/.bash_profile
+home/.bash_logout
