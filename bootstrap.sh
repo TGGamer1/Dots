@@ -123,12 +123,12 @@ show_menu() {
 # ─── Auto Mode ────────────────────────────
 if $AUTO_MODE; then
     if ! $SKIP_UPDATE; then
+        log "Running System Update"
         run_script update_system.sh
     else
         log "Skipping system update as requested."
     fi
 
-    run_cmd run_script "update_system.sh"
     run_cmd run_script "install_pkgs.sh"
     run_cmd run_script "stow_configs.sh"
     run_cmd run_script "setup_shell.sh"
