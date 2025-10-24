@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
+# Colorful command runner
+run_cmd() {
+    echo -e "\033[1;34m>>> $@\033[0m"
+    "$@"
+}
+
 log "Installing common packages..."
 
 install_packages() {
@@ -56,13 +62,13 @@ install_packages() {
 # Arch: install yay if missing
 if [ "$DISTRO" = "arch" ] && ! command -v yay &>/dev/null; then
     log "Installing yay (AUR helper)..."
-    sudo pacman -S --needed --noconfirm base-devel git
+    run_cmd sudo pacman -S --needed --noconfirm base-devel git
     tmpdir=$(mktemp -d)
-    git clone https://aur.archlinux.org/yay.git "$tmpdir"
+    run_cmd git clone https://aur.archlinux.org/yay.git "$tmpdir"
     (cd "$tmpdir" && makepkg -si --noconfirm)
     rm -rf "$tmpdir"
 fi
 
 # Install packages
-install_packages "$PKG_DIR/common.txt"
-install_packages "$PKG_DIR/${DISTRO}.txt"
+run_cmd install_packages "$PKG_DIR/common.txt"
+run_cmd install_packages "$PKG_DIR/${DISTRO}.txt"

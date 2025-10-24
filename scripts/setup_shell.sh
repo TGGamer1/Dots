@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
+run_cmd() {
+    echo -e "\033[1;34m>>> $@\033[0m"
+    "$@"
+}
+
 log "Sourcing shell configs..."
 
 case "$USER_SHELL" in
@@ -17,3 +22,4 @@ case "$USER_SHELL" in
         warn "Unknown shell — skipping shell sourcing."
         ;;
 esac
+2
