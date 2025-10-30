@@ -84,7 +84,7 @@ Open a new terminal for changes to take effect.
 
 Alternately, In a POSIX-Compilant Shell: 
 ```
-$ source bootstrap.sh
+source bootstrap.sh
 ```
 `Bash` is recommended by the developer as it is what he used, but `sh` can also be used.
 
