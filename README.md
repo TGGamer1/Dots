@@ -66,6 +66,7 @@
 
 
 Everything is writen in `bash`
+
 Note: Only top-level files are shown; each config folder contains multiple dotfiles.
 </details>
 
