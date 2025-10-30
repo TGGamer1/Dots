@@ -65,9 +65,9 @@
         └── update_system.sh        # Updates entire system
 
 
-Everything is writen in `bash`
+- Everything is writen in `bash`
 
-Note: Only top-level files are shown; each config folder contains multiple dotfiles.
+- Note: Only top-level files are shown; each config folder contains multiple dotfiles.
 </details>
 
 **The user is advised to read the endire README.**
