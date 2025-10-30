@@ -37,24 +37,36 @@
 </details>
 <details>
   <summary>Repo overview</summary>
+  
+    Dots/
+    ├── bootstrap.sh                # Main entry point, sources modular scripts
+    ├── config                      # Contains files pointing to $HOME/.config
+    │   ├── fish                    # Fish config files
+    │   ├── foot                    # Foot config files
+    │   ├── fuzzel                  # Fuzzel config files
+    │   ├── hypr                    # Hyprland config files (For Arch, end-4's dots)
+    │   └── kitty                   # Kitty config files
+    ├── home                        # Contains files pointing to $HOME
+    │   ├── .bashrc                 # Bash config
+    │   ├── shellconf               # Alis and function files to be listed here
+    │   │   └── alias
+    │   └── .zshrc                  # Zsh config
+    ├── pkgs
+    │   ├── arch.txt                # Arch-specific packages
+    │   ├── common.txt              # Packages installed on all distros
+    │   ├── debian.txt              # Debian/Ubuntu-specific packages
+    │   ├── fedora.txt              # Fedora-specific packages
+    │   └── nix.txt                 # Nix package manager(Works in NixOS & w/o)
+    └── scripts
+        ├── install_flatpak.sh      # Installs Flatpak apps
+        ├── install_pkgs.sh         # Package installation logic
+        ├── setup_shell.sh          # Configures and sources your shell
+        ├── stow_configs.sh         # Links dotfiles via stow
+        └── update_system.sh        # Updates entire system
 
-      Dots/
-    ├── home                     # Contains files pointing to $HOME
-    ├── config                   # Contains files pointing to $HOME/.config
-    ├── bootstrap.sh             # Main entry point, sources modular scripts
-    ├── scripts/
-    │   ├── install_pkgs.sh      # Package installation logic
-    │   ├── stow_configs.sh      # Links dotfiles via stow
-    │   ├── setup_shell.sh       # Configures and sources your shell
-    │   └── install_flatpak.sh   # Installs Flatpak apps
-    └── pkgs/
-        ├── common.txt           # Packages installed on all distros
-        ├── arch.txt             # Arch-specific packages
-        ├── debian.txt           # Debian/Ubuntu-specific packages
-        ├── fedora.txt           # Fedora-specific packages
-        └── nix.txt              # Nix package manager(Works in NixOS & w/o)
 
 Everything is writen in `bash`
+Note: Only top-level files are shown; each config folder contains multiple dotfiles.
 </details>
 
 **The user is advised to read the endire README.**
@@ -97,14 +109,16 @@ $ source bootstrap.sh
 
 - For multi-user setups (like Nix), packages may need to be installed per-user.
 
-- Scripts are to be run one at a time through bootstrap.sh. If the user wishes he may run them manually.
+- Scripts are to be run one at a time through bootstrap.sh. If the user wishes he may run them manually **but** it is not recommanded as it will break some things.
+
+- **The user is expected to backup important files beforehand**
 
 - The `home/shellconf/alias` file should be edited according to the user's liking, containing only `alias` definitions as it is sourced by `bash`, `zsh` and `fish` which use different syntax for functions.
 
 - Oh-My-Zsh should be installed by the user prior to running `setup_shell.sh`.
 
 <div align="center">
-    <h3>• Enjoy your setup! 🚀 •</h3>
+    <h3> Enjoy your setup! 🚀 </h3>
     <h4></h4>
 </div>
 

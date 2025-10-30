@@ -129,10 +129,10 @@ if $AUTO_MODE; then
         log "Skipping system update as requested."
     fi
 
-    run_cmd run_script "install_pkgs.sh"
-    run_cmd run_script "stow_configs.sh"
-    run_cmd run_script "setup_shell.sh"
-    run_cmd run_script "install_flatpak.sh"
+    run_script "install_pkgs.sh"
+    run_script "stow_configs.sh"
+    run_script "setup_shell.sh"
+    run_script "install_flatpak.sh"
     log "Bootstrap complete. Enjoy Your Setup🎉"
 else
     show_menu

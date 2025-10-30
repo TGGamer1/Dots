@@ -15,10 +15,10 @@ alias history="atuin history list | bat"
 alias which="pacman -Ql"
  
 alias grep="rg"
-alias find="fd"
+# alias find="fd"
 alias cat="bat"
 alias ls="eza -lha --icons"
-alias tree="eza --tree --icons"
+# alias tree="eza --tree --icons"
 alias cd="z"
 
 # --------------------------------------------------------------------------------
