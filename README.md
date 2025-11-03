@@ -34,6 +34,7 @@
    ./bootstrap.sh
    ```
    - The name of the install script is `bootstrap.sh`.
+- Clone the git repo in $HOME/Dots only as it is essiantial for the inner workings.
 </details>
 <details>
   <summary>Repo overview</summary>
@@ -116,7 +117,7 @@ source bootstrap.sh
 
 - The `home/shellconf/alias` file should be edited according to the user's liking, containing only `alias` definitions as it is sourced by `bash`, `zsh` and `fish` which use different syntax for functions.
 
-- Oh-My-Zsh should be installed by the user prior to running `setup_shell.sh`.
+- `Oh-My-Zsh` and `FIsher` should be installed by the user prior to running `setup_shell.sh`.
 
 <div align="center">
     <h3> Enjoy your setup! 🚀 </h3>

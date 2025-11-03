@@ -8,15 +8,20 @@ if ! command -v stow &>/dev/null; then
     install_packages "$PKG_DIR/common.txt" # Should include stow
 fi
 
-if [ ! -d home ] && [ ! -d config ]; then
+if [ ! -d home ]; then
     warn "No stow directories found — skipping."
 else
-    stow --verbose=1 -t ~ home config --ignore="hypr"
+    stow --verbose=1 -t ~ home
 fi
 
-if [[ "$DISTRO"=="arch" ]]; then 
+if [ ! -d config ]; then
+    warn "Config dir not found — skipping."
+else
+    stow --verbose=1 -t ~/.config --ignore="hypr"
+
+if [[ "$DISTRO" == "arch" ]]; then 
     run_cmd "Arch detected! Symlinking Hypr config..."
-    stow --verbose=1 -d config -t ~ hypr
+    stow --verbose=1 -d config -t ~/.config hypr
 else
     run_cmd "Not Arch ($DISTRO), skipping Hypr config."
 fi
