@@ -50,7 +50,8 @@
     ├── home                        # Contains files pointing to $HOME
     │   ├── .bashrc                 # Bash config
     │   ├── shellconf               # Alis and function files to be listed here
-    │   │   └── alias
+    │   │   ├── alias.fish          # Alias and functions for fish
+    │   │   └── alias.zsh           # Alias and functions for Z Shell
     │   └── .zshrc                  # Zsh config
     ├── pkgs
     │   ├── arch.txt                # Arch-specific packages
@@ -101,13 +102,13 @@ source bootstrap.sh
 
   -  update_system.sh ( **WARNING** the setup may not function properly without it)
 
-   -  install_pkgs.sh
+  -  install_pkgs.sh
 
   -   stow_configs.sh
 
-   -  setup_shell.sh
+  -  setup_shell.sh
 
-   -  install_flatpak.sh
+  -  install_flatpak.sh
 
 - For multi-user setups (like Nix), packages may need to be installed per-user.
 
@@ -115,9 +116,9 @@ source bootstrap.sh
 
 - **The user is expected to backup important files beforehand**
 
-- The `home/shellconf/alias` file should be edited according to the user's liking, containing only `alias` definitions as it is sourced by `bash`, `zsh` and `fish` which use different syntax for functions.
+- The `home/shellconf/alias.fish` and `alias.zsh` file should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instense.
 
-- `Oh-My-Zsh` and `FIsher` should be installed by the user prior to running `setup_shell.sh`.
+- `Oh-My-Zsh` and `Fisher` should be installed by the user prior to running `setup_shell.sh`.
 
 <div align="center">
     <h3> Enjoy your setup! 🚀 </h3>
