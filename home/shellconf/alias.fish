@@ -50,6 +50,8 @@ alias history="atuin history list | bat"
 alias which="yay -Qln" # Always use grep or rg
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 
+alias ffetch="fastfetch --config hypr"
+
 # Modern Replacement for old stuff
 alias grep="rg"
 alias cat="bat"
