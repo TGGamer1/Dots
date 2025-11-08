@@ -16,25 +16,29 @@
     <h3></h3>
 </div>
 
-<details> 
+<details>
   <summary>Notable features</summary>
-     
-  - **Overview**: This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions.
-  - **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, NixOS(No idea how it will behave), and even supports Brew and Flatpak.
-  - **Transparent installation**: Every command is shown before it's run.
-  - **Automatic setup**: with the `--auto` flag everything will be automatically installed and setup with proper symlinks using stow.
+
+- **Overview**: This repository automates setting up your terminal workflow and dotfiles across multiple Linux distributions.
+- **Distro Support**: It works on Arch, Debian/Ubuntu, Fedora, NixOS(No idea how it will behave), and even supports Brew and Flatpak.
+- **Transparent installation**: Every command is shown before it's run.
+- **Automatic setup**: with the `--auto` flag everything will be automatically installed and setup with proper symlinks using stow.
+
 </details>
-<details> 
+<details>
   <summary>Installation</summary>
 
-   - Just run
+- Just run
+
    ```bash
    git clone https://github.com/TGGamer1/Dots.git ~/Dots
    cd ~/Dots
    ./bootstrap.sh
    ```
-   - The name of the install script is `bootstrap.sh`.
-- Clone the git repo in $HOME/Dots only as it is essiantial for the inner workings.
+
+- The name of the install script is `bootstrap.sh`.
+- Clone the git repo in $HOME/Dots only as it is essential for the inner workings.
+
 </details>
 <details>
   <summary>Repo overview</summary>
@@ -67,13 +71,13 @@
         ├── stow_configs.sh         # Links dotfiles via stow
         └── update_system.sh        # Updates entire system
 
-
-- Everything is writen in `bash`
+- Everything is written in `bash`
 
 - Note: Only top-level files are shown; each config folder contains multiple dotfiles.
+
 </details>
 
-**The user is advised to read the endire README.**
+**The user is advised to read the entire README.**
 
 <div align="center">
     <h2>• usage •</h2>
@@ -83,15 +87,16 @@
 Run `bootstrap.sh` with `--auto` to automatically install packages and link configs.
 Or use `--skip-update` with `--auto` to automatically install packages and link configs without updating the package repo(s) and your entire system.
 
-<h4>Please insure bash is installed and avilable.</h4>
+<h4>Please insure bash is installed and available.</h4>
 
-Alternately, In a POSIX-Compilant Shell: 
+Alternately, In a POSIX-Compilant Shell:
+
 ```
 source bootstrap.sh
 ```
-`Bash` is recommended by the developer as it is what he used, but `sh` can also be used.
-Nothing else is recommanded and may not behave correctly, zsh has been tested and gave errors.
 
+`Bash` is recommended by the developer as it is what he used, but `sh` can also be used.
+Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been tested and gave errors.
 
 **Optional:** Customize the pkgs/*.txt files to include the packages you want.
 
@@ -102,15 +107,15 @@ Nothing else is recommanded and may not behave correctly, zsh has been tested an
 
 - The scripts should be sourced in the following order for proper setup:
 
-  -  update_system.sh ( **WARNING** the setup may not function properly without it)
+  - update_system.sh ( **WARNING** the setup may not function properly without it)
 
-  -  install_pkgs.sh
+  - install_pkgs.sh
 
-  -   stow_configs.sh
+  - stow_configs.sh
 
-  -  setup_shell.sh
+  - setup_shell.sh
 
-  -  install_flatpak.sh
+  - install_flatpak.sh
 
 - For multi-user setups (like Nix), packages may need to be installed per-user.
 
@@ -118,7 +123,7 @@ Nothing else is recommanded and may not behave correctly, zsh has been tested an
 
 - **The user is expected to backup important files beforehand**.
 
-- The `home/shellconf/alias.fish` and `alias.zsh` file should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instense.
+- The `home/shellconf/alias.fish` and `alias.zsh` file should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instance.
 
 - `Oh-My-Zsh` and `Fisher` should be installed by the user prior to running `setup_shell.sh`.
 
@@ -140,6 +145,11 @@ Nothing else is recommanded and may not behave correctly, zsh has been tested an
 </div>
 
 ---
+
+<div align=center>
+
+<h3>• contrubiting •</h3>
+If you have any ideas/improvements feel free to open an issue or pr. Otherwise you can contact me on <a href="https://www.reddit.com/user/TGamer_1/">reddit.</a>(I may respond a bit late)
 
 <h3></h3>
 
