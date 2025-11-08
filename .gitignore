@@ -2,6 +2,10 @@ local
 config/nvim
 config/gtk-*
 config/gtkrc-2.0
+config/fish/*
+!config/fish/config.fish
+!config/fish/auto-Hypr.fish
+!config/fish/fish_variables
 home/.gtkrc-2.0
 home/.bash_history
 home/.bash_profile

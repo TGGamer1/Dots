@@ -39,6 +39,7 @@ alias zshconf="nvim ~/.zshrc"
 alias fishconf="nvim ~/.config/fish/config.fish"
 alias kittyconf="nvim ~/.config/kitty/kitty.conf"
 alias hyprconf="z ~/.config/hypr/hyprland"
+alias aliasconf="nvim ~/shellconf/alias/zsh"
 
 # Distro-specific pkg management
 alias upgrade="yay -Syu"

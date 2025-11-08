@@ -31,13 +31,14 @@ if test -s "$NVM_DIR/bash_completion"
     bass source $NVM_DIR/bash_completion
 end
 
-# ──── NOTE: Aliases for Fish ──────────────────────────────────────────────────
+# ──── Aliases for Fish ──────────────────────────────────────────────────
 # For editing configs
 alias bashconf="nvim ~/.bashrc"
 alias zshconf="nvim ~/.zshrc"
 alias fishconf="nvim ~/.config/fish/config.fish"
 alias kittyconf="nvim ~/.config/kitty/kitty.conf"
 alias hyprconf="z ~/.config/hypr/hyprland"
+alias aliasconf="nvim ~/shellconf/alias.fish"
 
 # Distro-specific pkg management
 alias upgrade="yay -Syu"
@@ -50,6 +51,7 @@ alias history="atuin history list | bat"
 alias which="yay -Qln" # Always use grep or rg
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 
+# For better or different functions of smae pkgs
 alias ffetch="fastfetch --config hypr"
 
 # Modern Replacement for old stuff
@@ -86,6 +88,21 @@ function portal
         clear
         echo "🌀 Welcome to (basename $dir)"
     end
+end
+
+function vz
+    if test (count $argv) -eq 0
+        echo "Usage: vz <dir>"
+        return 1
+    end
+
+    set dir $argv[1]
+    # Jump there with zoxide
+    z $dir
+
+    # Launch VS Code and Kitty in background
+    code .
+    kitty --detach &
 end
 
 # ─── Fzf colors ───────────────────────────────────────────────────────────────
