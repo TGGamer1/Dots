@@ -52,6 +52,7 @@
     │   ├── shellconf               # Alis and function files to be listed here
     │   │   ├── alias.fish          # Alias and functions for fish
     │   │   └── alias.zsh           # Alias and functions for Z Shell
+    │   ├── .bashrc                 # Bash config
     │   └── .zshrc                  # Zsh config
     ├── pkgs
     │   ├── arch.txt                # Arch-specific packages
