@@ -52,7 +52,6 @@
     │   ├── hypr                    # Hyprland config files (For Arch, end-4's dots)
     │   └── kitty                   # Kitty config files
     ├── home                        # Contains files pointing to $HOME
-    │   ├── .bashrc                 # Bash config
     │   ├── shellconf               # Alis and function files to be listed here
     │   │   ├── alias.fish          # Alias and functions for fish
     │   │   └── alias.zsh           # Alias and functions for Z Shell
