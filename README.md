@@ -27,7 +27,7 @@
 <details> 
   <summary>Installation</summary>
 
-   - Just run 
+   - Just run
    ```bash
    git clone https://github.com/TGGamer1/Dots.git ~/Dots
    cd ~/Dots
@@ -81,15 +81,16 @@
 </div>
 
 Run `bootstrap.sh` with `--auto` to automatically install packages and link configs.
-Or use `--skip-update` with `--auto` to automatically install packages and link configs without updating the package repo(s) and your entire system
+Or use `--skip-update` with `--auto` to automatically install packages and link configs without updating the package repo(s) and your entire system.
 
-Open a new terminal for changes to take effect.
+<h4>Please insure bash is installed and avilable.</h4>
 
 Alternately, In a POSIX-Compilant Shell: 
 ```
 source bootstrap.sh
 ```
 `Bash` is recommended by the developer as it is what he used, but `sh` can also be used.
+Nothing else is recommanded and may not behave correctly, zsh has been tested and gave errors.
 
 
 **Optional:** Customize the pkgs/*.txt files to include the packages you want.
@@ -115,7 +116,7 @@ source bootstrap.sh
 
 - Scripts are to be run one at a time through bootstrap.sh. If the user wishes he may run them manually **but** it is not recommanded as it will break some things.
 
-- **The user is expected to backup important files beforehand**
+- **The user is expected to backup important files beforehand**.
 
 - The `home/shellconf/alias.fish` and `alias.zsh` file should be edited according to the user's liking, containing `alias`, `functions` and other things to the users liking as they as automatically sourced at every new instense.
 
@@ -134,7 +135,7 @@ source bootstrap.sh
 
 - This project was heavily inspired by <a href="https://github.com/end-4">end-4</a>’s legendary dotfile structure and their approach to transparent, idempotent setup scripts.
 
-- Copying: Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (maybe unless you loudly do weird stuff)
+- Copying: Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (maybe unless you loudly do weird stuff).
 
 </div>
 
