@@ -144,7 +144,7 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 <div align=center>
 
 <h2>• contrubiting •</h2>
-If you have any ideas/improvements feel free to open an issue or pr. Otherwise you can contact me on <a href="https://www.reddit.com/user/TGamer_1/">reddit.</a>(I may respond a bit late)
+If you have any ideas/improvements feel free to open an issue/pr. Otherwise you can contact me on <a href="https://www.reddit.com/user/TGamer_1/">reddit.</a>(I may respond a bit late)
 <h3></h3>
 
 </div>
