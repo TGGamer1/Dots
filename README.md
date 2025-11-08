@@ -134,8 +134,6 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 
 <div align="center">
 
----
-
 <h2>• inspirations/copying •</h2>
 
 - This project was heavily inspired by <a href="https://github.com/end-4">end-4</a>’s legendary dotfile structure and their approach to transparent, idempotent setup scripts.
@@ -143,8 +141,6 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 - Copying: Personally I have absolutely no problem with others redistributing/recreating my work. There's no "stealing" (maybe unless you loudly do weird stuff).
 
 </div>
-
----
 
 <div align=center>
 
@@ -154,6 +150,6 @@ If you have any ideas/improvements feel free to open an issue or pr. Otherwise y
 
 </div>
 
-<h3></h3>
+<h2></h2>
 
 **P.S. The scripts were written on Arch Linux and haven’t yet been tested on other distros.**
