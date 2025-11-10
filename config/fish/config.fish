@@ -11,14 +11,10 @@ if status is-interactive # Commands to run in interactive sessions can go here
     # No greeting
     set fish_greeting
 
-    # Use starship
-    starship init fish | source
-    if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-        cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+    # ─── Source all shellconf files ────────────────────────────────
+    for f in ~/shellconf/*.fish
+      source $f
     end
 
-    if test -f ~/shellconf/alias.fish
-        source ~/shellconf/alias.fish
-    end
 
 end

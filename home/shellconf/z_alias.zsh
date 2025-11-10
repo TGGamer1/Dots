@@ -15,22 +15,8 @@ fi
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
 
-# ─── Functions ────────────────────────────────────────────────────────────────
-portal() {
-  local dir
-  dir=$(zoxide query -l | fzf \
-    --prompt="🚪 Enter Portal > " \
-    --border=rounded \
-    --ansi \
-    --height=100% \
-    --reverse \
-    --info=inline \
-    --layout=reverse-list \
-    --preview 'eza -lha --git --icons --color=always --group-directories-first {} 2>/dev/null || ls -lha --color=always {}' \
-  ) || return
-
-  [ -n "$dir" ] && cd "$dir" && clear && echo "🌀 Welcome to "$dir""
-}
+bindkey '^H' backward-kill-word 
+bindkey '^Z' undo
 
 # ─── Alias ────────────────────────────────────────────────────────────────────
 # For editing configs
@@ -39,7 +25,7 @@ alias zshconf="nvim ~/.zshrc"
 alias fishconf="nvim ~/.config/fish/config.fish"
 alias kittyconf="nvim ~/.config/kitty/kitty.conf"
 alias hyprconf="z ~/.config/hypr/hyprland"
-alias aliasconf="nvim ~/shellconf/alias/zsh"
+alias aliasconf="nvim ~/shellconf/alias.zsh"
 
 # Distro-specific pkg management
 alias upgrade="yay -Syu"
@@ -49,7 +35,7 @@ alias pamcan='pacman'
 
 # Some shell-commands replaced by better ones
 alias history="atuin history list | bat"
-alias which="yay -Qln" # Always pipe through grep or rg
+alias which="yay -Qln" # Always pipe through grep or rg or get dumped with a lod of output
 alias clear="printf '\033[2J\033[3J\033[1;1H'"
 alias ll='eza -lha --git --icons --color=always --group-directories-first 2>/dev/null || ls -lha --color=always {}'
 
@@ -61,14 +47,23 @@ alias tree="eza --tree --icons --color=always --git"
 alias cd="z"
 alias q='qs -c ii'
 
+# ─── ALiases for Functions ────────────────────────────────────────────────────
+# Defined in shellconf/function.fish
+# For ll
+alias ls="ll"
+alias l="ll"
+alias sl="ll"
+
+# For portal
+alias p="portal"
+
 # ─── eval and source things ───────────────────────────────────────────────────
 
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-source /usr/share/nvm/init-nvm.sh
-source ~/shellconf/alias.zsh
+#source /usr/share/nvm/init-nvm.sh
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 

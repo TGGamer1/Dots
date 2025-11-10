@@ -14,6 +14,11 @@ end
 
 # ─── Eval and init things ─────────────────────────────────────────────────────
 # Initialize tools
+# Use starship
+starship init fish | source
+if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+    cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+end
 zoxide init fish | source
 atuin init fish | source
 
@@ -41,7 +46,7 @@ alias hyprconf="z ~/.config/hypr/hyprland"
 alias aliasconf="nvim ~/shellconf/alias.fish"
 
 # Distro-specific pkg management
-alias upgrade="yay -Syu"
+alias upgrade="yay -Syu --noconfirm"
 alias install="yay -S --needed --noconfirm"
 alias remove="yay -R"
 alias pamcan='pacman'
@@ -57,53 +62,19 @@ alias ffetch="fastfetch --config hypr"
 # Modern Replacement for old stuff
 alias grep="rg"
 alias cat="bat"
-alias ls="eza -lha --git --icons --color=always --group-directories-first"
 alias tree="eza --tree --icons --color=always --git"
 alias cd="z"
 alias q='qs -c ii'
 
-# ─── Functions ────────────────────────────────────────────────────────────────
-# Better use of eza
-function ll
-    if test (count $argv) -eq 0
-        set argv .
-    end
-    # Try eza first, fallback to ls
-    eza -lha --git --icons --color=always --group-directories-first $argv 2>/dev/null || ls -lha --color=always $argv
-end
+# ─── ALiases for Functions ────────────────────────────────────────────────────
+# Defined in shellconf/function.fish
+# For ll
+alias ls="ll"
+alias l="ll"
+alias sl="ll"
 
-# 🚀 Warp Gate / Portal Function
-function portal
-    # Use zoxide directory history for fuzzy selection
-    set dir (zoxide query -l | fzf \
-        --height=100% \
-        --border=rounded \
-        --reverse \
-        --info=inline \
-        --preview 'eza -lha --git --icons --color=always --group-directories-first {} 2>/dev/null || ls -lha --color=always {}'
-    )
-    # If a directory was selected, cd into it
-    if test -n "$dir"
-        cd "$dir"
-        clear
-        echo "🌀 Welcome to (basename $dir)"
-    end
-end
-
-function vz
-    if test (count $argv) -eq 0
-        echo "Usage: vz <dir>"
-        return 1
-    end
-
-    set dir $argv[1]
-    # Jump there with zoxide
-    z $dir
-
-    # Launch VS Code and Kitty in background
-    code .
-    kitty --detach &
-end
+# For portal
+alias p="portal"
 
 # ─── Fzf colors ───────────────────────────────────────────────────────────────
 set -x FZF_DEFAULT_OPTS '--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
