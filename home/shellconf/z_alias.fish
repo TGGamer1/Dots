@@ -1,18 +1,18 @@
-# ─── User configuration ─────────────────────────────────────────────────────── 
-# Add to MANPATH
+# ──── User configuration ─────────────────────────────────────────────────────── 
+# ─── Add to MANPATH
 set -x MANPATH /usr/local/man $MANPATH
 
-# Language environment
+# ─── Language environment
 set -x LANG en_US.UTF-8
 
-# Preferred editor (based on SSH or local)
+# ─── Preferred editor (based on SSH or local)
 if set -q SSH_CONNECTION
     set -x EDITOR vim
 else
     set -x EDITOR nvim
 end
 
-# ─── Eval and init things ─────────────────────────────────────────────────────
+# ──── Eval and init things ─────────────────────────────────────────────────────
 # ─── Initialize tools
 # ── Use starship
 starship init fish | source
@@ -36,7 +36,7 @@ if test -s "$NVM_DIR/bash_completion"
     bass source $NVM_DIR/bash_completion
 end
 
-# ──── Aliases for Fish ──────────────────────────────────────────────────
+# ───── Aliases for Fish ──────────────────────────────────────────────────
 # ─── For editing configs
 alias bashconf="nvim ~/.bashrc"
 alias zshconf="nvim ~/.zshrc"
@@ -66,7 +66,7 @@ alias tree="eza --tree --icons --color=always --git"
 alias cd="z"
 alias q='qs -c ii'
 
-# ─── ALiases for Functions ────────────────────────────────────────────────────
+# ──── ALiases for Functions ────────────────────────────────────────────────────
 # ─── Defined in shellconf/function.fish
 # ── For ll
 alias ls="ll"
@@ -76,5 +76,5 @@ alias sl="ll"
 # ── For portal
 alias p="portal"
 
-# ─── Fzf colors ───────────────────────────────────────────────────────────────
+# ──── Fzf colors ───────────────────────────────────────────────────────────────
 set -x FZF_DEFAULT_OPTS '--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
