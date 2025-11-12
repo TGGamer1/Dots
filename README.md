@@ -126,6 +126,8 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 
 - `Oh-My-Zsh` and `Fisher` should be installed by the user prior to running `setup_shell.sh`.
 
+- The scripts are currently focused on Arch, as it is what the creator (me) used to create them.
+
 <div align="center">
     <h3> Enjoy your setup! 🚀 </h3>
     <h4></h4>
@@ -144,7 +146,7 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 <div align=center>
 
 <h2>• contrubiting •</h2>
-If you have any ideas/improvements feel free to open an issue/pr. Otherwise you can contact me on <a href="https://www.reddit.com/user/TGamer_1/">reddit</a>.(I may respond a bit late)
+If you have any ideas/improvements feel free to open an issue/pr. Otherwise you can contact me on <a href="https://www.reddit.com/user/TGamer_1/">reddit</a> .(I may respond a bit late)
 <h3></h3>
 
 </div>
