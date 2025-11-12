@@ -1,5 +1,5 @@
 # ─── Functions ────────────────────────────────────────────────────────────────
-# Better use of eza
+# ─── Better use of eza
 function ll
     if test (count $argv) -eq 0
         set argv .
@@ -8,7 +8,7 @@ function ll
     eza -lha --git --icons --color=always --group-directories-first $argv 2>/dev/null || ls -lha --color=always $argv
 end
 
-# 🚀 Warp Gate / Portal Function
+# ─── Warp Gate / Portal Function
 function portal
     # Use zoxide directory history for fuzzy selection
     set dir (zoxide query -l | fzf \
@@ -26,6 +26,7 @@ function portal
     end
 end
 
+# ─── Type 'vz foo' for cd-ing and opening VScode in foo
 function vz
     if test (count $argv) -eq 0
         echo "Usage: vz <dir>"
