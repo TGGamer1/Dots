@@ -92,7 +92,7 @@ run_script() {
 
 # ─── Menu (Manual Mode) ───────────────────
 show_menu() {
-    log "=== T's Multi-Distro Bootstrap ==="
+    log "=== T's Multi-Distro Bootstrap 󰇼󰇼󰇼"
     log "Detected shell: $USER_SHELL"
     log "Detected distro: $DISTRO"
     echo
