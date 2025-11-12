@@ -1,4 +1,5 @@
 # ─── Functions ────────────────────────────────────────────────────────────────
+# ─── Jump to recent dirs, using zoxide and fxf
 portal() {
   local dir
   dir=$(zoxide query -l | fzf \
