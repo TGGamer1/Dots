@@ -3,14 +3,15 @@
     <h3></h3>
 </div>
 
+<!--
 <div align="center">
 
-![](https://img.shields.io/github/last-commit/TGGamer1/Dots?&style=for-the-badge&color=8ad7eb&logo=git&logoColor=D9E0EE&labelColor=1E202B)
-![](https://img.shields.io/github/stars/TGGamer1/Dots?style=for-the-badge&logo=andela&color=86dbd7&logoColor=D9E0EE&labelColor=1E202B)
-![](https://img.shields.io/github/repo-size/TGGamer1/Dots?color=86dbce&label=SIZE&logo=protondrive&style=for-the-badge&logoColor=D9E0EE&labelColor=1E202B)
+![](https://img.shields.io/github/last-commit/nixarchie/Dots?style=for-the-badge&color=8ad7eb&logo=git&logoColor=D9E0EE&labelColor=1E202B)
+![](https://img.shields.io/github/stars/nixarchie/Dots?style=for-the-badge&logo=andela&color=86dbd7&logoColor=D9E0EE&labelColor=1E202B)
+![](https://img.shields.io/github/repo-size/nixarchie/Dots?color=86dbce&label=SIZE&logo=protondrive&style=for-the-badge&logoColor=D9E0EE&labelColor=1E202B)
 
 </div>
-
+-->
 <div align="center">
     <h2>• overview •</h2>
     <h3></h3>
@@ -146,11 +147,17 @@ Nothing else is recommended and may not behave correctly, Z Shell(zsh) has been 
 <div align=center>
 
 <h2>• contrubiting •</h2>
-If you have any ideas/improvements feel free to open an issue/pr. Otherwise you can contact me on <a href="https://www.reddit.com/user/TGamer_1/">reddit</a> .(I may respond a bit late)
+If you have any ideas/improvements feel free to open an issue/pr. Otherwise you can contact me on <a href="https://www.reddit.com/user/TGamer_1/">reddit</a>.(I may respond a bit late)
 <h3></h3>
 
 </div>
 
 <h2></h2>
+
+<div>
+
+<h4>As the project is in devlopement, this README is not always updated. Please do refer to the `Notes` dir for latest changes and plans.</h4>
+
+</div>
 
 **P.S. The scripts were written on Arch Linux and haven’t yet been tested on other distros.**
